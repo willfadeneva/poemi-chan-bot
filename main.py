@@ -2,8 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import os
 import requests
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://poemi-chan.onrender.com"],  # Frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 
