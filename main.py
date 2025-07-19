@@ -9,6 +9,9 @@ API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 class PoemRequest(BaseModel):
     topic: str
+@app.get("/")
+def root():
+    return {"message": "Poemi-chan poetry bot is alive!"}
 
 @app.post("/generate_poem")
 def generate_poem(req: PoemRequest):
